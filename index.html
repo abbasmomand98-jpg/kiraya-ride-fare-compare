@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiraya — Ride Fare Compare &amp; Safe Ride Planner (UX Concept)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">K</span> Kiraya</div>
+  <p class="tagline">Same ride. Half the fare. — Ride fare compare &amp; safe ride planner for Pakistan</p>
+  <p class="sample-note">SAMPLE DATA — every fare, surge multiplier, driver, figure and city shown here is invented for this UX concept demo. No real fare, driver, ride, or person appears. Kiraya is an unofficial concept, not a ride-hailing app: always compare the fare and check the driver and the plate before you get into any car.</p>
+</header>
+
+<nav class="tabs" aria-label="Kiraya sections">
+  <button id="tab-compare" class="tab-btn active" data-tab="compare">Fare Compare</button>
+  <button id="tab-surge" class="tab-btn" data-tab="surge">Surge Planner</button>
+  <button id="tab-safety" class="tab-btn" data-tab="safety">Safety</button>
+  <button id="tab-book" class="tab-btn" data-tab="book">Book a Ride</button>
+  <button id="tab-spotter" class="tab-btn" data-tab="spotter">Fare Spotter</button>
+</nav>
+
+<main>
+  <!-- Fare compare -->
+  <section class="card" id="section-compare">
+    <p class="eyebrow">FARE COMPARE</p>
+    <h2>Same ride. Half the fare.</h2>
+    <p class="hint">The same ride in a Pakistani city costs wildly different fares on different apps — and nobody compares before booking. Mahnoor, 22, from Lahore — a university student who rides daily — paid Rs 580 last week for a ride that cost Rs 320 the day before.</p>
+    <div class="verify-row">
+      <label>City
+        <select id="city-select">
+          <option value="Lahore">Lahore</option>
+          <option value="Karachi">Karachi</option>
+          <option value="Islamabad">Islamabad</option>
+          <option value="Peshawar">Peshawar</option>
+          <option value="Rawalpindi">Rawalpindi</option>
+          <option value="Faisalabad">Faisalabad</option>
+        </select>
+      </label>
+      <label class="check-label">
+        <input id="verified-only" type="checkbox" checked> Verified driver only
+      </label>
+    </div>
+    <div id="fare-list"></div>
+    <p id="fare-summary"></p>
+    <div id="fare-gap"></div>
+    <div id="monthly-saving"></div>
+  </section>
+
+  <!-- Surge planner -->
+  <section class="card" id="section-surge" style="display:none">
+    <p class="eyebrow">SURGE PLANNER</p>
+    <h2>Fog evening? Wait 25 min.</h2>
+    <p class="hint">In evening fog the surge hits ×1.8 and Careem jumps from Rs 460 to Rs 828. Fog season is Nov–Feb — fewer drivers, higher surge. Check the forecast by hour, then wait for it to drop.</p>
+    <div class="verify-row">
+      <label>Hour
+        <select id="surge-hour">
+          <option value="5 PM">5 PM</option>
+          <option value="6 PM">6 PM</option>
+          <option value="7 PM" selected>7 PM</option>
+          <option value="8 PM">8 PM</option>
+          <option value="9 PM">9 PM</option>
+        </select>
+      </label>
+      <label>App
+        <select id="surge-app">
+          <option value="careem">Careem — Rs 460</option>
+          <option value="indrive">inDrive — Rs 320</option>
+          <option value="yango">Yango — Rs 385</option>
+          <option value="bykea">Bykea — Rs 290</option>
+        </select>
+      </label>
+    </div>
+    <div id="surge-result"></div>
+    <div id="surge-forecast"></div>
+    <div id="wait-save"></div>
+  </section>
+
+  <!-- Safety -->
+  <section class="card" id="section-safety" style="display:none">
+    <p class="eyebrow">SAFE RIDE</p>
+    <h2>Check 5 points. Ride safe.</h2>
+    <p class="hint">A driver cancelled twice on Mahnoor after accepting at 10pm. Tick every check off before you book; your ticks are saved on this device. She shares her live trip with her brother every night.</p>
+    <p id="safety-progress"></p>
+    <ul id="safety-checks"></ul>
+    <div id="safety-verdict"></div>
+    <h3>Driver cancellation rate</h3>
+    <p class="hint">A driver who cancelled 2 of the last 10 rides is flagged a frequent canceller. Check the rate before you book.</p>
+    <div class="verify-row">
+      <label>Cancelled rides (of last 10)
+        <input id="cancel-count" type="number" min="0" max="10" step="1" value="2">
+      </label>
+      <button id="cancel-btn">Check the driver</button>
+    </div>
+    <div id="cancel-result"></div>
+    <h3>Share live trip</h3>
+    <p class="hint">Your family follows the ride live — the same way Mahnoor shares hers with her brother every night. Saved on this device.</p>
+    <label class="check-label">
+      <input id="share-trip" type="checkbox"> Share this trip live with family
+    </label>
+    <p id="share-status"></p>
+  </section>
+
+  <!-- Booking -->
+  <section class="card" id="section-book" style="display:none">
+    <p class="eyebrow">BOOK A RIDE</p>
+    <h2>Booked. Rs 320, inDrive.</h2>
+    <p class="hint">Book the cheapest verified ride and get a booking reference with a live ETA — no more paying Rs 580 for a Rs 320 ride. Pay in the app: no cash, no "petrol money".</p>
+    <div class="verify-row">
+      <label>App
+        <select id="book-app"></select>
+      </label>
+      <button id="book-btn">Book this ride</button>
+    </div>
+    <div id="booking-result"></div>
+    <div id="driver-card"></div>
+  </section>
+
+  <!-- Fare spotter quiz -->
+  <section class="card" id="section-spotter" style="display:none">
+    <p class="eyebrow">FARE SPOTTER</p>
+    <h2>Spot the red flags.</h2>
+    <p class="hint">Three things a driver does that should stop you getting in — and one safe habit. Call each one a red flag or safe, then check your score.</p>
+    <div id="spotter-quiz"></div>
+    <button id="spotter-btn">Check my score</button>
+    <div id="spotter-result"></div>
+  </section>
+
+  <button id="reset-demo" class="secondary">Reset demo data</button>
+</main>
+
+<footer>
+  <p>Kiraya is an unofficial UX concept by Muhammad Abbas Khan — not a ride-hailing app.</p>
+  <p>Available for new projects: abbasmomand98@gmail.com</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

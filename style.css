@@ -1,0 +1,134 @@
+/* Kiraya — vivid violet #9333EA on warm off-white #FDF9FF, ink #1E1B2E, soft lilac #F3E8FF panels, amber #F59E0B surge secondary. Clean, minimal, generous whitespace. */
+:root {
+  --violet: #9333EA;
+  --violet-dark: #7E22CE;
+  --violet-tint: #F3E8FF;
+  --base: #FDF9FF;
+  --ink: #1E1B2E;
+  --char: #363250;
+  --grey: #6B6580;
+  --line: #E2DEEE;
+  --ok: #15803D;
+  --ok-bg: #DCFCE7;
+  --red: #B91C1C;
+  --red-bg: #FEE2E2;
+  --amber: #B45309;
+  --amber-bg: #FEF3C7;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--base);
+  color: var(--ink);
+  line-height: 1.55;
+}
+.top { max-width: 860px; margin: 0 auto; padding: 40px 20px 8px; }
+.brand { font-size: 34px; font-weight: 800; }
+.logo {
+  display: inline-block; width: 40px; height: 40px; line-height: 40px;
+  text-align: center; border-radius: 50%; background: var(--violet); color: #fff;
+}
+.tagline { font-size: 20px; color: var(--grey); margin: 4px 0 12px; }
+.sample-note {
+  background: var(--violet-tint); border: 2px solid var(--violet);
+  border-radius: 14px; padding: 12px 16px; font-size: 14px;
+}
+.tabs {
+  max-width: 860px; margin: 0 auto; padding: 12px 20px 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.tab-btn {
+  background: #fff; color: var(--violet-dark); border: 2px solid var(--violet);
+  border-radius: 999px; padding: 8px 18px; font-size: 15px; font-weight: 700;
+  cursor: pointer;
+}
+.tab-btn.active { background: var(--violet); color: #fff; }
+main { max-width: 860px; margin: 0 auto; padding: 20px; display: grid; gap: 24px; }
+.card {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 24px; padding: 28px; box-shadow: 0 8px 30px rgba(30, 27, 46, 0.06);
+}
+.card h2 { margin-top: 0; font-size: 26px; }
+.card h3 { margin: 24px 0 4px; font-size: 20px; }
+.eyebrow { color: var(--violet-dark); letter-spacing: 2px; font-weight: 700; font-size: 13px; margin: 0 0 8px; }
+.hint { color: var(--grey); }
+.verify-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; margin: 16px 0 4px; }
+.verify-row label { font-size: 14px; font-weight: 600; color: var(--grey); flex: 1 1 260px; }
+.verify-row label input { width: 100%; }
+.check-label { display: flex; align-items: center; gap: 8px; flex: 1 1 260px; }
+.check-label input { width: 20px; height: 20px; accent-color: var(--violet); }
+select, input[type="text"], input[type="number"] {
+  display: block; margin-top: 6px; padding: 10px 12px; font-size: 16px;
+  border: 2px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink);
+}
+button {
+  background: var(--violet); color: #fff; border: none; border-radius: 14px;
+  padding: 12px 22px; font-size: 16px; font-weight: 700; cursor: pointer;
+}
+button:hover { background: var(--violet-dark); }
+button.secondary { background: #fff; color: var(--violet-dark); border: 2px solid var(--violet); }
+button.secondary:hover { background: var(--violet-tint); }
+button:disabled { opacity: 0.5; cursor: default; }
+.alert { border-radius: 16px; padding: 16px; margin: 12px 0; }
+.alert.ok { background: var(--ok-bg); color: var(--ok); }
+.alert.risk { background: var(--red-bg); color: var(--red); }
+.alert.warn { background: var(--amber-bg); color: var(--amber); }
+.alert.notfound { background: var(--violet-tint); color: var(--violet-dark); }
+.alert p { margin: 6px 0 0; color: var(--ink); }
+footer { max-width: 860px; margin: 0 auto; padding: 8px 20px 40px; color: var(--grey); font-size: 14px; }
+
+/* Kiraya — fare board rows. */
+.provider {
+  border: 1px solid var(--line); border-radius: 18px; padding: 16px; margin: 12px 0;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.provider.best { border-color: var(--violet); background: var(--violet-tint); }
+.provider h3 { margin: 0; font-size: 18px; }
+.provider p { margin: 2px 0; color: var(--grey); }
+.provider .recv { text-align: right; font-weight: 800; font-size: 18px; white-space: nowrap; }
+.provider .recv span { display: block; font-size: 13px; font-weight: 700; color: var(--amber); }
+#fare-summary { font-weight: 700; }
+#fare-gap .gap-box {
+  background: var(--amber-bg); border: 2px solid var(--amber); border-radius: 16px;
+  padding: 16px; margin: 12px 0; color: var(--amber);
+}
+#fare-gap .gap-box p { margin: 4px 0 0; color: var(--ink); }
+#monthly-saving .total, #surge-result .total {
+  background: var(--violet-tint); border-radius: 14px; padding: 14px 16px;
+  font-size: 18px;
+}
+#safety-checks { list-style: none; padding: 0; margin: 16px 0; }
+#safety-checks li {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 10px 14px; border-bottom: 1px solid var(--line);
+}
+#safety-checks li.done span { color: var(--ok); font-weight: 600; text-decoration: line-through; }
+#safety-checks input { width: 20px; height: 20px; accent-color: var(--violet); flex-shrink: 0; margin-top: 2px; }
+#safety-progress, #share-status { font-weight: 700; }
+#booking-result .alert strong { font-size: 18px; }
+
+/* Kiraya — surge forecast bars. */
+.forecast { background: var(--violet-tint); border-radius: 16px; padding: 16px; margin: 12px 0; }
+.forecast .bars { display: flex; gap: 10px; align-items: flex-end; margin-top: 12px; }
+.surge-bar { flex: 1; text-align: center; }
+.surge-bar span { display: block; font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.surge-bar div { border-radius: 8px 8px 0 0; }
+.surge-bar label { display: block; font-size: 13px; font-weight: 600; color: var(--grey); margin-top: 6px; }
+.surge-bar.on span { color: var(--violet-dark); }
+
+/* Kiraya — driver card and spotter quiz. */
+.driver {
+  border: 2px solid var(--violet); border-radius: 18px; padding: 16px; margin: 12px 0;
+}
+.driver strong { font-size: 13px; letter-spacing: 2px; color: var(--grey); }
+.driver h3 { margin: 4px 0; font-size: 22px; }
+.driver p { margin: 4px 0; color: var(--grey); }
+.badge-ok {
+  display: inline-block; background: var(--ok-bg); color: var(--ok);
+  border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 700;
+}
+.spotter-q { border-bottom: 1px solid var(--line); padding: 12px 0; }
+.spotter-q p { margin: 0 0 10px; }
+.spotter-q button { margin-right: 8px; }
+.flag-btn.chosen, button.secondary.chosen { outline: 3px solid var(--violet-dark); }
